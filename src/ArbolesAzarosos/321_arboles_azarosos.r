@@ -24,6 +24,7 @@ PARAM$rpart_param <- list(
   "maxdepth" = 14
 )
 
+
 # parametros  arbol
 # entreno cada arbol con solo 50% de las variables variables
 PARAM$feature_fraction <- 0.5
