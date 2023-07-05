@@ -1,5 +1,8 @@
 # Corrida general del workflow
-
+# se cambia:
+# canaritos asesinos: factor 0.4
+# corregir variables: machinelearning
+# training strategy: undersamplying 0.6
 options(error = function() {
   traceback(20)
   options(error = NULL)
