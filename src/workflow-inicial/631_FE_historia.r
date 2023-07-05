@@ -23,7 +23,7 @@ PARAM$exp_input <- "DR6210"
 
 PARAM$lag1 <- TRUE
 PARAM$lag2 <- TRUE
-PARAM$lag3 <- FALSE
+PARAM$lag3 <- TRUE
 
 PARAM$Tendencias1$run <- TRUE
 PARAM$Tendencias1$ventana <- 6
@@ -55,7 +55,7 @@ PARAM$RandomForest$semilla <- 102013 # cambiar por la propia semilla
 # varia de 0.0 a 2.0, si es 0.0 NO se activan
 PARAM$CanaritosAsesinos$ratio <- 0.5
 # desvios estandar de la media, para el cutoff
-PARAM$CanaritosAsesinos$desvios <- 4.0
+PARAM$CanaritosAsesinos$desvios <- 2.0
 # cambiar por la propia semilla
 PARAM$CanaritosAsesinos$semilla <- 102013
 
