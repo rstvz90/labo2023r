@@ -34,7 +34,7 @@ PARAM$Tendencias1$promedio <- TRUE
 PARAM$Tendencias1$ratioavg <- TRUE
 PARAM$Tendencias1$ratiomax <- FALSE
 
-PARAM$Tendencias2$run <- FALSE
+PARAM$Tendencias2$run <- TRUE
 PARAM$Tendencias2$ventana <- 6
 PARAM$Tendencias2$tendencia <- TRUE
 PARAM$Tendencias2$minimo <- FALSE
@@ -53,7 +53,7 @@ PARAM$RandomForest$semilla <- 102013 # cambiar por la propia semilla
 
 
 # varia de 0.0 a 2.0, si es 0.0 NO se activan
-PARAM$CanaritosAsesinos$ratio <- 0.5
+PARAM$CanaritosAsesinos$ratio <- 1
 # desvios estandar de la media, para el cutoff
 PARAM$CanaritosAsesinos$desvios <- 2.0
 # cambiar por la propia semilla
