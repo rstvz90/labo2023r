@@ -1,4 +1,4 @@
-sssssssssssssssssssss# Experimentos Colaborativos Default
+# Experimentos Colaborativos Default
 # Workflow  Feature Engineering historico
 
 # limpio la memoria
