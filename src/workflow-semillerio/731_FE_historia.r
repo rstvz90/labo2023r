@@ -23,7 +23,7 @@ PARAM$exp_input <- "DR7210_exp3"
 
 PARAM$lag1 <- TRUE
 PARAM$lag2 <- TRUE
-PARAM$lag3 <- TRUE
+PARAM$lag3 <- FALSE
 
 PARAM$Tendencias1$run <- TRUE
 PARAM$Tendencias1$ventana <- 6
@@ -45,8 +45,8 @@ PARAM$Tendencias2$ratiomax <- FALSE
 
 
 PARAM$RandomForest$run <- TRUE
-PARAM$RandomForest$num.trees <- 260
-PARAM$RandomForest$max.depth <- 27
+PARAM$RandomForest$num.trees <- 100
+PARAM$RandomForest$max.depth <- 15
 PARAM$RandomForest$min.node.size <- 900
 PARAM$RandomForest$mtry <- 13
 PARAM$RandomForest$semilla <- 102013 # cambiar por la propia semilla
