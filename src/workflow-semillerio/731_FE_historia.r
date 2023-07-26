@@ -17,9 +17,9 @@ require("lightgbm")
 
 # Parametros del script
 PARAM <- list()
-PARAM$experimento <- "FE7310_exp3"
+PARAM$experimento <- "FE7310_sem4"
 
-PARAM$exp_input <- "DR7210_exp3"
+PARAM$exp_input <- "DR7210_sem4"
 
 PARAM$lag1 <- TRUE
 PARAM$lag2 <- TRUE
