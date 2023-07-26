@@ -10,12 +10,13 @@ require("yaml")
 
 # Parametros del script
 PARAM <- list()
-PARAM$experimento <- "CA7110_sem4"
+PARAM$experimento <- "CA7110_sem5"
 PARAM$dataset <- "./datasets/competencia_2023.csv.gz"
 
 # valores posibles
-#  "MachineLearning"  "EstadisticaClasica" "Ninguno"
-PARAM$metodo <- "MachineLearning"
+#  "ninguno", "rank_simple", "rank_cero_fijo", "deflacion", "normaliza", "intvert" , "escala"
+
+PARAM$metodo <- "normaliza"
 PARAM$home <- "~/buckets/b1/"
 
 # FIN Parametros del script
@@ -34,6 +35,18 @@ options(error = function() {
 GrabarOutput <- function() {
   write_yaml(OUTPUT, file = "output.yml") # grabo output
 }
+
+#------------------------------------------------------------------------------
+
+drift_normaliza <- function(campos_drift) {
+  for (campo in campos_drift){
+    cat(campo, " ")
+
+    dataset[, paste0(campo, "_normal") := (get(campo) - mean(get(campo), na.rm=TRUE)) / sd(get(campo), na.rm=TRUE), by = .(foto_mes)]
+  }
+}
+
+
 #------------------------------------------------------------------------------
 
 CorregirCampoMes <- function(pcampo, pmeses) {
@@ -226,6 +239,9 @@ dir.create(paste0("./exp/", PARAM$experimento, "/"), showWarnings = FALSE)
 # Establezco el Working Directory DEL EXPERIMENTO
 setwd(paste0("./exp/", PARAM$experimento, "/"))
 
+campos_monetarios <- colnames(dataset)
+campos_monetarios <- campos_monetarios[campos_monetarios %like%
+                                         "^(m|Visa_m|Master_m|vm_m)"]
 GrabarOutput()
 write_yaml(PARAM, file = "parametros.yml") # escribo parametros utilizados
 
@@ -235,6 +251,7 @@ setorder(dataset, numero_de_cliente, foto_mes)
 switch(PARAM$metodo,
   "MachineLearning"     = Corregir_MachineLearning(dataset),
   "EstadisticaClasica"  = Corregir_EstadisticaClasica(dataset),
+  "normaliza"           = drift_normaliza(campos_monetarios),
   "Ninguno"             = cat("No se aplica ninguna correccion.\n"),
 )
 
