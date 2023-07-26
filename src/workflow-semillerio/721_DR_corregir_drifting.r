@@ -11,15 +11,15 @@ require("yaml")
 
 # Parametros del script
 PARAM <- list()
-PARAM$experimento <- "DR7210_sem4"
+PARAM$experimento <- "DR7210_sem5"
 
-PARAM$exp_input <- "CA7110_sem4"
+PARAM$exp_input <- "CA7110_sem5"
 
 PARAM$variables_intrames <- TRUE # atencion esto esta en TRUE
 
 # valores posibles
-#  "ninguno", "rank_simple", "rank_cero_fijo", "deflacion"
-PARAM$metodo <- "deflacion"
+#  "ninguno", "rank_simple", "rank_cero_fijo", "deflacion", "normaliza", "intvert" , "escala"
+PARAM$metodo <- "normaliza"
 
 PARAM$home <- "~/buckets/b1/"
 # FIN Parametros del script
@@ -205,7 +205,15 @@ drift_deflacion <- function(campos_monetarios) {
     .SDcols = campos_monetarios
   ]
 }
+#------------------------------------------------------------------------------
 
+drift_normaliza <- function(campos_drift) {
+  for (campo in campos_drift){
+    cat(campo, " ")
+
+    dataset[, paste0(campo, "_normal") := (get(campo) - mean(get(campo), na.rm=TRUE)) / sd(get(campo), na.rm=TRUE), by = .(foto_mes)]
+  }
+}
 #------------------------------------------------------------------------------
 
 drift_rank_simple <- function(campos_drift) {
@@ -274,6 +282,7 @@ switch(PARAM$metodo,
   "ninguno"        = cat("No hay correccion del data drifting"),
   "rank_simple"    = drift_rank_simple(campos_monetarios),
   "rank_cero_fijo" = drift_rank_cero_fijo(campos_monetarios),
+  "normaliza"      = drift_normaliza(campos_monetarios),
   "deflacion"      = drift_deflacion(campos_monetarios)
 )
 
