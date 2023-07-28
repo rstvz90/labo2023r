@@ -27,9 +27,9 @@ options(error = function() {
 
 # Parametros del script
 PARAM <- list()
-PARAM$experimento <- "HT7510_sem5"
+PARAM$experimento <- "HT7510_sem6"
 
-PARAM$exp_input <- "TS7410_sem5"
+PARAM$exp_input <- "TS7410_sem6"
 
 # En caso que se haga cross validation, se usa esta cantidad de folds
 PARAM$lgb_crossvalidation_folds <- 5
@@ -39,7 +39,7 @@ PARAM$lgb_semilla <- 102013 # cambiar por su propia semilla
 
 # Hiperparametros FIJOS de  lightgbm
 PARAM$lgb_basicos <- list(
-  boosting = "gbdt", # puede ir  dart  , ni pruebe random_forest
+  boosting = "dart", # puede ir  dart  , ni pruebe random_forest
   objective = "binary",
   metric = "custom",
   first_metric_only = TRUE,
